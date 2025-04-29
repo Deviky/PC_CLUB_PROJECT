@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Auth_Service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Auth_Service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Client_Service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Client_Service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Order_Service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Order_Service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PCClub_Microservices.iml" filepath="$PROJECT_DIR$/.idea/PCClub_Microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PC_Service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/PC_Service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Payment_Service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Payment_Service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway.main.iml" />
+    </modules>
+  </component>
+</project>

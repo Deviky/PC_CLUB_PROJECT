@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: CLIENT-SERVICE
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pc_club_db
+    username: postgres
+    password: 915327
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  jackson:
+    time-zone: "Europe/Moscow"
+
+eureka:
+  client:
+    instance:
+      hostname: localhost
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8093
+
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+    root: INFO

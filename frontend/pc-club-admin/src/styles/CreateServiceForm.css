@@ -1,0 +1,69 @@
+/* Стили для формы создания сервиса */
+.create-service-form {
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: 15px auto;
+    transition: box-shadow 0.3s ease;
+}
+
+.create-service-form:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Заголовок формы */
+.create-service-form h3 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Стили для полей формы */
+.create-service-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.create-service-form input,
+.create-service-form textarea,
+.create-service-form select {
+    width: 100%;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+}
+
+.create-service-form input:focus,
+.create-service-form textarea:focus,
+.create-service-form select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Стили для кнопки отправки */
+.create-service-form button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.create-service-form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}

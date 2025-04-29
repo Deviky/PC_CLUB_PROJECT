@@ -1,0 +1,65 @@
+server:
+  port: 8966
+
+eureka:
+  client:
+    instance:
+      hostname: localhost
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: GATEWAY
+  config:
+    import: optional:configserver:http://localhost:8888
+  cloud:
+    gateway:
+      default-filters:
+        - name: JwtAuthFilter
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
+      routes:
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/auth/**
+
+
+        - id: CLIENT-SERVICE
+          uri: lb://CLIENT-SERVICE
+          predicates:
+            - Path=/client/**
+
+
+        - id: ORDER-SERVICE
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order/**
+
+
+        - id: PAYMENT-SERVICE
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/**
+
+
+        - id: PC-SERVICE
+          uri: lb://PC-SERVICE
+          predicates:
+            - Path=/pc-service/**
+
+
+
+logging:
+  level:
+    root: INFO
+    com.multiplayerserver: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+

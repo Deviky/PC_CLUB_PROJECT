@@ -1,0 +1,40 @@
+/* Обёртка */
+.reserve-btn__wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 12px;
+  }
+  
+  /* Кнопка */
+  .reserve-btn__button {
+    background: linear-gradient(135deg, #4f46e5, #3b82f6);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .reserve-btn__button:hover {
+    background: linear-gradient(135deg, #4338ca, #2563eb);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.5);
+  }
+  
+  .reserve-btn__button:active {
+    transform: scale(0.98);
+  }
+  
+  .reserve-btn__button:disabled {
+    background: #cbd5e1;
+    color: #4b5563;
+    cursor: not-allowed;
+    box-shadow: none;
+  }

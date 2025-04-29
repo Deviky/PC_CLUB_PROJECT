@@ -1,0 +1,66 @@
+.dashboard {
+    background-color: #f7fafc; /* Лёгкий фоновый цвет */
+    min-height: 100vh; /* Чтобы страница занимала всю высоту */
+    padding: 20px;
+  }
+  
+  .dashboard .dashboard-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard .dashboard-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard .dashboard-description {
+    font-size: 1.125rem;
+    color: #4a5568;
+    margin-bottom: 30px;
+  }
+  
+  .dashboard .dashboard-card {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard .card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #2d3748;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard .card-description {
+    font-size: 1rem;
+    color: #4a5568;
+  }
+  
+  .dashboard .dashboard-card:last-child {
+    margin-bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard .dashboard-content {
+      padding: 20px;
+    }
+  
+    .dashboard .dashboard-title {
+      font-size: 1.75rem;
+    }
+  
+    .dashboard .dashboard-description {
+      font-size: 1rem;
+    }
+  }
+  

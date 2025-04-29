@@ -1,0 +1,56 @@
+.service-card {
+    padding: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .service-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .service-card.selected {
+    background-color: #38a169; /* Зеленый фон при выборе */
+    color: white;
+    border-color: #2f855a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-card.default {
+    background-color: white;
+    border-color: #d1d5db;
+  }
+  
+  .service-card h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .service-card p {
+    font-size: 0.875rem;
+    color: #4a5568;
+    margin-bottom: 8px;
+  }
+  
+  .service-card .service-info {
+    font-size: 0.875rem;
+    color: #4a5568;
+  }
+  
+  .service-card .service-info strong {
+    font-weight: 600;
+    color: #2d3748;
+  }
+  
+  .service-card .time-info {
+    margin-top: 16px;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .service-card .time-info strong {
+    font-weight: 600;
+    color: #2d3748;
+  }

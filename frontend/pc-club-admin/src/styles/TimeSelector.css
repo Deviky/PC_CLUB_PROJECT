@@ -1,0 +1,59 @@
+.time-selector {
+    background-color: #fff;
+    padding: 16px;
+    margin-bottom: 16px;
+    width: 350px; /* Увеличиваем ширину блока */
+    margin-left: auto;
+    margin-right: auto; /* Центрируем блок */
+  }
+  
+  .time-selector h3 {
+    font-size: 1.25rem; /* Немного увеличиваем размер заголовка */
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 16px;
+  }
+  
+  .time-selector label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .time-selector input {
+    width: 100%;
+    max-width: 280px; /* Увеличиваем максимальную ширину поля ввода */
+    padding: 8px 12px;
+    font-size: 1rem; /* Увеличиваем размер шрифта */
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+    height: 40px; /* Увеличиваем высоту поля ввода */
+  }
+  
+  .time-selector input:focus {
+    border-color: #38b2ac;
+    outline: none;
+  }
+  
+  .time-selector input[type="datetime-local"] {
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Поддержка русского шрифта */
+  }
+  
+  .time-selector input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  .time-selector input[type="number"]::-webkit-outer-spin-button,
+  .time-selector input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .time-selector div {
+    margin-bottom: 16px;
+  }
+  

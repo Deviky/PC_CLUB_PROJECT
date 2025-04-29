@@ -1,0 +1,21 @@
+.service-list {
+    padding: 16px;
+    background-color: #f7fafc; /* Светлый фон */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Сетка для карточек сервисов */
+  .service-list .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Адаптивная сетка */
+    gap: 16px;
+    margin-top: 16px;
+  }
+  
+  .service-list h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 16px;
+  }

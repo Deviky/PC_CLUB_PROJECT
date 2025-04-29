@@ -1,0 +1,75 @@
+.book-pc__container {
+    max-width: 860px;
+    margin: 40px auto;
+    padding: 32px;
+    background-color: #f7fafc;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .book-pc__title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2d3748;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  
+  /* Пространство между секциями */
+  .book-pc__section {
+    margin-bottom: 32px;
+  }
+  
+  /* Чекбокс с бонусами — центрирование и увеличение */
+  .book-pc__bonus-checkbox-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+  
+  .book-pc__bonus-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #2d3748;
+    list-style: none; /* Убираем точки, если появляются */
+  }
+  
+  .book-pc__bonus-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #3182ce;
+    cursor: pointer;
+  }
+  
+  /* Стилизация заголовков разделов */
+  .book-pc__subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #2c5282;
+  }
+  
+  /* Стилизация кнопок, НЕ затрагивая Toast */
+  .book-pc__button {
+    background-color: #3182ce;
+    color: white;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .book-pc__button:hover {
+    background-color: #2b6cb0;
+  }
+  
+  .book-pc__button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }

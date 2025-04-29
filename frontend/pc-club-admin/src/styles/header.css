@@ -1,0 +1,98 @@
+/* styles/header.css */
+header {
+    background: linear-gradient(90deg, rgb(8, 39, 123) 0%, rgb(9, 230, 230) 100%); /* Градиент синий-зеленый */
+    color: white;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #374151; /* Граница снизу */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    border-radius: 8px;
+  }
+  
+  header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FBBF24; /* Яркий желтый */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  header .logo:hover {
+    transform: scale(1.1); /* Легкое увеличение логотипа при наведении */
+  }
+  
+  header .search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  header .search input {
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 1px solid #6B7280; /* Серый бордер */
+    background-color: #F9FAFB; /* Светлый фон для инпута */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: border 0.3s ease;
+  }
+  
+  header .search input:focus {
+    border-color: #3B82F6; /* Синий бордер при фокусе */
+  }
+  
+  header .search button {
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #3B82F6, #2563EB); /* Градиент для кнопки */
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  header .search button:hover {
+    background: linear-gradient(45deg, #2563EB, #3B82F6); /* Инвертируем градиент при наведении */
+    transform: scale(1.05); /* Увеличение кнопки при наведении */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  header .navigation {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  header .navigation button {
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #10B981, #059669); /* Градиент для зеленой кнопки */
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  header .navigation button:hover {
+    background: linear-gradient(45deg, #059669, #10B981); /* Инвертируем градиент при наведении */
+    transform: scale(1.05); /* Увеличение кнопки при наведении */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  header .navigation .admin-button {
+    background: linear-gradient(45deg, #F59E0B, #D97706); /* Градиент для желтой кнопки */
+  }
+  
+  header .navigation .admin-button:hover {
+    background: linear-gradient(45deg, #D97706, #F59E0B);
+  }
+  
+  header .navigation .logout-button {
+    background: linear-gradient(45deg, #EF4444, #B91C1C); /* Градиент для красной кнопки */
+  }
+  
+  header .navigation .logout-button:hover {
+    background: linear-gradient(45deg, #B91C1C, #EF4444);
+  }
+  

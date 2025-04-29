@@ -1,0 +1,44 @@
+.client-info-container {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .client-info-container h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 12px;
+  }
+  
+  .client-info-container p {
+    font-size: 16px;
+    color: #4a5568;
+    margin: 8px 0;
+  }
+  
+  .client-info-container p strong {
+    font-weight: 600;
+    color: #2d3748;
+  }
+  
+  .client-info-container .balance,
+  .client-info-container .bonus-balance {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .client-info-container .balance {
+    color: #38b2ac; /* Цвет для баланса */
+  }
+  
+  .client-info-container .bonus-balance {
+    color: #ecc94b; /* Цвет для бонусов */
+  }
+  
+  .client-info-container .email {
+    color: #3182ce;
+  }
