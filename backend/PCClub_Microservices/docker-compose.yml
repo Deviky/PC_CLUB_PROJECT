@@ -1,0 +1,110 @@
+version: '3.8'
+
+services:
+  # Eureka Discovery Server
+  eureka-server:
+    build:
+      context: ./discovery  # Путь до папки, где лежит Dockerfile для eureka
+    container_name: eureka-server
+    environment:
+      - spring.application.name=DISCOVERY
+    ports:
+      - "8761:8761"
+    networks:
+      - pc-club-network
+    # Задержка на старте для того, чтобы дать время Eureka запуститься
+    restart: always
+
+  # AUTH-SERVICE
+  auth-service:
+    build:
+      context: ./Auth-Service
+    container_name: auth-service
+    environment:
+      - spring.application.name=AUTH-SERVICE
+    ports:
+      - "8095:8095"
+    depends_on:
+      - eureka-server
+    networks:
+      - pc-club-network
+    restart: always
+
+  # CLIENT-SERVICE
+  client-service:
+    build:
+      context: ./Client-Service
+    container_name: client-service
+    environment:
+      - spring.application.name=CLIENT-SERVICE
+    ports:
+      - "8093:8093"
+    depends_on:
+      - eureka-server
+    networks:
+      - pc-club-network
+    restart: always
+
+  # ORDER-SERVICE
+  order-service:
+    build:
+      context: ./Order-Service
+    container_name: order-service
+    environment:
+      - spring.application.name=ORDER-SERVICE
+    ports:
+      - "8094:8094"
+    depends_on:
+      - eureka-server
+    networks:
+      - pc-club-network
+    restart: always
+
+  # PAYMENT-SERVICE
+  payment-service:
+    build:
+      context: ./Payment-Service
+    container_name: payment-service
+    environment:
+      - spring.application.name=PAYMENT-SERVICE
+    ports:
+      - "8092:8092"
+    depends_on:
+      - eureka-server
+    networks:
+      - pc-club-network
+    restart: always
+
+  # PC-SERVICE
+  pc-service:
+    build:
+      context: ./PC-Service
+    container_name: pc-service
+    environment:
+      - spring.application.name=PC-SERVICE
+    ports:
+      - "8091:8091"
+    depends_on:
+      - eureka-server
+    networks:
+      - pc-club-network
+    restart: always
+
+  # Gateway
+  gateway:
+    build:
+      context: ./gateway
+    container_name: gateway
+    environment:
+      - spring.application.name=GATEWAY
+    ports:
+      - "8966:8966"
+    depends_on:
+      - eureka-server
+    networks:
+      - pc-club-network
+    restart: always
+
+networks:
+  pc-club-network:
+    driver: bridge

@@ -3,9 +3,9 @@ spring:
     name: PAYMENT-SERVICE
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/pc_club_db
-    username: postgres
-    password: 915327
+    url: jdbc:postgresql://dpg-d08h32be5dus73ehqf6g-a.oregon-postgres.render.com/pc_club_db
+    username: root
+    password: Cm7tgKzBKERCKH5acn7qLwfhP1UCNDzX
     driver-class-name: org.postgresql.Driver
 
   jpa:

@@ -29,17 +29,32 @@ export const AuthProvider = ({ children }) => {
   
     if (storedToken) {
       try {
-        const { exp } = JSON.parse(atob(storedToken.split('.')[1]));
-        if (Date.now() >= exp * 1000) {
-          logout(); // токен истёк
+        const payload = JSON.parse(atob(storedToken.split('.')[1]));
+        const exp = payload.exp;
+  
+        console.log("JWT payload:", payload);
+        if (!exp) {
+          logout();
           return;
         }
   
-        setToken(storedToken);
-        setRole(storedRole);
-        setIsAuthenticated(true);
+        if (Date.now() >= exp * 1000) {
+          logout();
+        } else {
+          console.log("Token valid. Expires in", exp * 1000 - Date.now(), "ms");
+          setToken(storedToken);
+          setRole(storedRole);
+          setIsAuthenticated(true);
+  
+          const timeout = setTimeout(() => {
+            console.log("Token expired. Logging out.");
+            logout();
+          }, exp * 1000 - Date.now());
+  
+          return () => clearTimeout(timeout);
+        }
       } catch (e) {
-        logout(); // ошибка декодирования токена — очищаем всё
+        logout();
       }
     } else {
       logout();
