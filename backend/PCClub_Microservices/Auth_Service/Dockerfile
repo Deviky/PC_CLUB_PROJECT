@@ -5,7 +5,7 @@ FROM gradle:8-jdk AS build
 WORKDIR /app
 
 # Копируем все файлы проекта в контейнер
-COPY src/main .
+COPY . .
 
 # Выполняем сборку приложения
 RUN gradle build --no-daemon
