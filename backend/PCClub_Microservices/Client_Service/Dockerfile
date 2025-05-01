@@ -1,5 +1,5 @@
 # Этап 1: Сборка
-FROM gradle:8.0.1-jdk21 AS build
+FROM gradle:8-jdk AS build
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
