@@ -18,7 +18,7 @@ services:
   # AUTH-SERVICE
   auth-service:
     build:
-      context: ./Auth-Service
+      context: ./Auth_Service
     container_name: auth-service
     environment:
       - spring.application.name=AUTH-SERVICE
@@ -33,7 +33,7 @@ services:
   # CLIENT-SERVICE
   client-service:
     build:
-      context: ./Client-Service
+      context: ./Client_Service
     container_name: client-service
     environment:
       - spring.application.name=CLIENT-SERVICE
@@ -48,7 +48,7 @@ services:
   # ORDER-SERVICE
   order-service:
     build:
-      context: ./Order-Service
+      context: ./Order_Service
     container_name: order-service
     environment:
       - spring.application.name=ORDER-SERVICE
@@ -63,7 +63,7 @@ services:
   # PAYMENT-SERVICE
   payment-service:
     build:
-      context: ./Payment-Service
+      context: ./Payment_Service
     container_name: payment-service
     environment:
       - spring.application.name=PAYMENT-SERVICE
@@ -78,7 +78,7 @@ services:
   # PC-SERVICE
   pc-service:
     build:
-      context: ./PC-Service
+      context: ./PC_Service
     container_name: pc-service
     environment:
       - spring.application.name=PC-SERVICE
