@@ -19,32 +19,27 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class AuthServiceClient {
 
-    private final RestTemplate restTemplate;
+    private final WebClient.Builder webClientBuilder;
 
     public UserDTO getUserFromToken(String token) {
         try {
-            String url = "http://AUTH-SERVICE/auth/me"; // имя сервиса вместо localhost
-
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("Authorization", "Bearer " + token);
-
-            HttpEntity<String> entity = new HttpEntity<>(headers);
-
-            ResponseEntity<UserDTO> response = restTemplate.exchange(
-                    url,
-                    HttpMethod.GET,
-                    entity,
-                    UserDTO.class
-            );
-
-            return response.getBody();
-        } catch (HttpClientErrorException | HttpServerErrorException e) {
-            System.err.println("Ошибка при получении пользователя: " + e.getStatusCode());
-            throw new RuntimeException("Ошибка при получении пользователя", e);
+            return webClientBuilder.build()
+                    .get()
+                    .uri("http://AUTH-SERVICE/auth/me")
+                    .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                    .retrieve()
+                    .onStatus(
+                            status -> status.is4xxClientError() || status.is5xxServerError(),
+                            response -> response.bodyToMono(String.class)
+                                    .flatMap(msg -> Mono.error(new RuntimeException("Ошибка при получении пользователя: " + msg)))
+                    )
+                    .bodyToMono(UserDTO.class) // Возвращаем UserDTO
+                    .block(); // Блокировка для синхронного возврата результата
+        } catch (Exception e) {
+            throw new RuntimeException("Ошибка при получении пользователя: " + e.getMessage(), e);
         }
     }
 }
-
 
 
 
