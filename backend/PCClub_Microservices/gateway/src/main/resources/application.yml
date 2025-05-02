@@ -6,7 +6,7 @@ server:
     key-store: classpath:javatechie.jks
     key-store-password: 915327
     key-store-type: JKS
-    key-alias: 915327
+    key-alias: spring-https
 
 eureka:
   client:
