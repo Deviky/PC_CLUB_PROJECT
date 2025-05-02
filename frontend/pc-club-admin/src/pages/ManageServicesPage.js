@@ -17,7 +17,7 @@ const ManageServicesPage = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("http://62.109.1.5:8966/pc-service/service/get-all", {
+        const response = await fetch("https://dennis.michurin.fvds.ru/pc-service/service/get-all", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,
@@ -40,7 +40,7 @@ const ManageServicesPage = () => {
   useEffect(() => {
     const fetchPcGroups = async () => {
       try {
-        const response = await fetch("http://62.109.1.5:8966/pc-service/pc-group/get-all", {
+        const response = await fetch("https://dennis.michurin.fvds.ru/pc-service/pc-group/get-all", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,
