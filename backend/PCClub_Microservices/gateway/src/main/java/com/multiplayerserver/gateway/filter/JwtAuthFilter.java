@@ -26,7 +26,6 @@ public class JwtAuthFilter extends AbstractGatewayFilterFactory<JwtAuthFilter.Co
     @Autowired
     private AuthServiceClient authServiceClient;
 
-
     public JwtAuthFilter() {
         super(Config.class);
     }
@@ -55,46 +54,42 @@ public class JwtAuthFilter extends AbstractGatewayFilterFactory<JwtAuthFilter.Co
             String token = authHeader.substring(7);
             log.debug("Extracted token: {}", token);
 
-            try {
-                UserDTO user = authServiceClient.getUserFromToken(token);
-                log.debug("Authenticated user: {}", user);
+            // Используем асинхронный подход с Mono
+            return authServiceClient.getUserFromToken(token)
+                    .flatMap(user -> {
+                        log.debug("Authenticated user: {}", user);
 
-                if (user == null || user.getRole() == null) {
-                    log.warn("User or role is null");
-                    exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-                    return exchange.getResponse().setComplete();
-                }
+                        if (user == null || user.getRole() == null) {
+                            log.warn("User or role is null");
+                            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+                            return exchange.getResponse().setComplete();
+                        }
 
-                Role role = user.getRole();
-                boolean isAdmin = role == Role.ROLE_ADMIN;
-                boolean isTechnical = role == Role.ROLE_TECHNICAL;
+                        Role role = user.getRole();
+                        boolean isAdmin = role == Role.ROLE_ADMIN;
+                        boolean isTechnical = role == Role.ROLE_TECHNICAL;
 
-                log.debug("User role: {}", role);
+                        log.debug("User role: {}", role);
 
-                boolean isAllowed = isTechnical
-                        || (isAdmin && validator.adminApiEndpoints.stream().anyMatch(path::matches)); // Используем регулярное выражение
+                        boolean isAllowed = isTechnical
+                                || (isAdmin && validator.adminApiEndpoints.stream().anyMatch(path::matches)); // Используем регулярное выражение
 
-                if (!isAllowed) {
-                    log.warn("Access denied. Role: {}, Path: {}", role, path);
-                    exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
-                    return exchange.getResponse().setComplete();
-                }
+                        if (!isAllowed) {
+                            log.warn("Access denied. Role: {}, Path: {}", role, path);
+                            exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
+                            return exchange.getResponse().setComplete();
+                        }
 
-                log.debug("Access granted for role: {}, path: {}", role, path);
-                return chain.filter(exchange);
-
-            } catch (Exception e) {
-                log.error("Exception during auth", e);
-                exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-                return exchange.getResponse().setComplete();
-            }
+                        log.debug("Access granted for role: {}, path: {}", role, path);
+                        return chain.filter(exchange);
+                    })
+                    .onErrorResume(e -> {
+                        log.error("Exception during auth", e);
+                        exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+                        return exchange.getResponse().setComplete();
+                    });
         };
     }
-
-
-
     public static class Config {
-
     }
-
 }
