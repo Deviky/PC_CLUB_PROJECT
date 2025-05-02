@@ -10,6 +10,9 @@ const LoginForm = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const { token, login } = useAuth();
+  const httpsAgent = new https.Agent({  
+    rejectUnauthorized: false  // отключаем проверку сертификатов
+  });
 
   // Если пользователь уже авторизован — редиректим на главную
   if (token) {
