@@ -20,7 +20,7 @@ const LoginForm = () => {
     setMessage("");
   
     try {
-      const response = await fetch("https://dennis.michurin.fvds.ru:8966/auth/login", {
+      const response = await fetch("https://dennis.michurin.fvds.ru/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
