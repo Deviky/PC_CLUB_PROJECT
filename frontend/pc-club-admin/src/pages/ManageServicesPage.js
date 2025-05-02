@@ -242,7 +242,7 @@ const ManageServicesPage = () => {
         </div>
       )}
 
-      <ToastContainer />
+      <ToastContainer position="bottom-right" autoClose={3000}/>
     </div>
   );
 };
