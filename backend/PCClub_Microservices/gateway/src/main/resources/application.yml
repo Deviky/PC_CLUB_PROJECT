@@ -1,12 +1,5 @@
 server:
   port: 8966
-  address: 0.0.0.0
-  ssl:
-    enabled: true
-    key-store: classpath:javatechie.jks
-    key-store-password: 915327
-    key-store-type: JKS
-    key-alias: spring-https
 
 eureka:
   client:
