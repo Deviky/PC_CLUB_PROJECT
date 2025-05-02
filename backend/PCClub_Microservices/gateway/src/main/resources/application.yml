@@ -3,7 +3,7 @@ server:
   address: 0.0.0.0
   ssl:
     enabled: true
-    key-store: classpath:javatehcie.jks
+    key-store: classpath:javatechie.jks
     key-store-password: 915327
     key-store-type: JKS
     key-alias: 915327
