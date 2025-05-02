@@ -1,17 +1,39 @@
 package com.multiplayerserver.gateway.service;
 
 import com.multiplayerserver.gateway.dto.UserDTO;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 
-@FeignClient(name = "AUTH-SERVICE", path = "/auth")
-public interface AuthServiceClient {
+@Service
+@RequiredArgsConstructor
+public class AuthServiceClient {
 
-    @GetMapping("/me")
-    Mono<UserDTO> getUserFromToken(@RequestHeader("Authorization") String token);
+    private final WebClient.Builder webClientBuilder;
+
+    public Mono<UserDTO> getUserFromToken(String token) {
+        return webClientBuilder.build()
+                .get()
+                .uri("http://AUTH-SERVICE/auth/me")
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                .retrieve()
+                .onStatus(
+                        status -> status.is4xxClientError() || status.is5xxServerError(),
+                        response -> response.bodyToMono(String.class)
+                                .flatMap(msg -> Mono.error(new RuntimeException("Ошибка при получении пользователя: " + msg)))
+                )
+                .bodyToMono(UserDTO.class);
+    }
 }
 
 
