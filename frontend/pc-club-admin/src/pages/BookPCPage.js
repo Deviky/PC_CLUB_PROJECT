@@ -35,7 +35,7 @@ const BookPCPage = () => {
           "Content-Type": "application/json",
         };
 
-        const res = await fetch("https://62.109.1.5:8966/pc-service/service/get-all", {
+        const res = await fetch("https://dennis.michurin.fvds.ru/pc-service/service/get-all", {
           headers,
         });
 

@@ -27,9 +27,9 @@ const ClientDetailsPage = () => {
 
     try {
       const [clientRes, orderRes, paymentRes] = await Promise.all([
-        fetch(`https://62.109.1.5:8966/client/get/${id}`, { headers }),
-        fetch(`https://62.109.1.5:8966/order/get-by-client/${id}`, { headers }),
-        fetch(`https://62.109.1.5:8966/payment/operations/${id}`, { headers }),
+        fetch(`https://dennis.michurin.fvds.ru/client/get/${id}`, { headers }),
+        fetch(`https://dennis.michurin.fvds.ru/order/get-by-client/${id}`, { headers }),
+        fetch(`https://dennis.michurin.fvds.ru/payment/operations/${id}`, { headers }),
       ]);
 
       if (!clientRes.ok) {

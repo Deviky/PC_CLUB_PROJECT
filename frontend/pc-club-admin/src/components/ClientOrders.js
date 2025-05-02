@@ -17,7 +17,7 @@ const ClientOrders = ({ orders }) => {
 
   const handleCancelOrder = async (orderId) => {
     try {
-      const response = await fetch(`https://62.109.1.5:8966/order/cancel/${orderId}`, {
+      const response = await fetch(`https://dennis.michurin.fvds.ru/order/cancel/${orderId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,

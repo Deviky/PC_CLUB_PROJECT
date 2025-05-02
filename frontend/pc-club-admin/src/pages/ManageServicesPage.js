@@ -73,8 +73,8 @@ const ManageServicesPage = () => {
   const handleSubmitService = async (requestData) => {
     try {
       const url = editingService
-        ? "https://62.109.1.5:8966/pc-service/service/update"
-        : "https://62.109.1.5:8966/pc-service/service/create";
+        ? "https://dennis.michurin.fvds.ru/pc-service/service/update"
+        : "https://dennis.michurin.fvds.ru/pc-service/service/create";
       const method = editingService ? "PUT" : "POST";
 
       const response = await fetch(url, {
@@ -124,7 +124,7 @@ const ManageServicesPage = () => {
     }
 
     try {
-      const response = await fetch(`https://62.109.1.5:8966/pc-service/service/delete/${serviceId}`, {
+      const response = await fetch(`https://dennis.michurin.fvds.ru/pc-service/service/delete/${serviceId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,

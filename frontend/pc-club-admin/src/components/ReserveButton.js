@@ -40,7 +40,7 @@ const ReserveButton = ({ pcId, selectedService, dateFrom, duration, clientId, us
     try {
       // Отправка запроса на создание заказа с токеном из контекста
       const response = await axios.post(
-        "http://localhost:8966/order/create",
+        "https://dennis.michurin.fvds.ru/order/create",
         orderRequest,
         {
           headers: {
