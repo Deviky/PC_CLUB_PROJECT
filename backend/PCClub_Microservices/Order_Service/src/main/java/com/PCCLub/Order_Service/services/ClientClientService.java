@@ -12,12 +12,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientClientService {
 
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
+
+    private WebClient getWebClient() {
+        return webClientBuilder.baseUrl("http://CLIENT-SERVICE").build();
+    }
 
     public ClientDto getClientById(Long clientId) {
         try {
-            return webClient.get()
-                    .uri("http://localhost:8093/client/get/" + clientId)
+            return getWebClient().get()
+                    .uri("/client/get/" + clientId)
                     .retrieve()
                     .onStatus(
                             status -> status.is4xxClientError() || status.is5xxServerError(),
@@ -33,8 +37,8 @@ public class ClientClientService {
 
     public List<ClientDto> getAllClients() {
         try {
-            return webClient.get()
-                    .uri("http://localhost:8093/client/get-all")  // Новый эндпоинт для получения всех клиентов
+            return getWebClient().get()
+                    .uri("/client/get-all")
                     .retrieve()
                     .onStatus(
                             status -> status.is4xxClientError() || status.is5xxServerError(),
@@ -49,3 +53,4 @@ public class ClientClientService {
         }
     }
 }
+

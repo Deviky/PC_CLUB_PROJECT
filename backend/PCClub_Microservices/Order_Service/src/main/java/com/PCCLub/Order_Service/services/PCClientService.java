@@ -15,19 +15,25 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class PCClientService {
 
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
+
+    private WebClient getWebClient() {
+        return webClientBuilder.baseUrl("http://PC-SERVICE").build(); // Имя сервиса из Eureka
+    }
 
     public String reservePC(ReserveDto reserveDto) {
         try {
-            return webClient.post()
-                    .uri("http://localhost:8091/pc-service/pc/reserve") // адрес сервиса
+            return getWebClient().post()
+                    .uri("/pc-service/pc/reserve")
                     .body(Mono.just(reserveDto), ReserveDto.class)
                     .retrieve()
-                    .onStatus(status -> status.is4xxClientError() || status.is5xxServerError(), response ->
-                            response.bodyToMono(String.class)
-                                    .map(msg -> new RuntimeException("Ошибка: " + msg)))
+                    .onStatus(
+                            status -> status.is4xxClientError() || status.is5xxServerError(),
+                            response -> response.bodyToMono(String.class)
+                                    .map(msg -> new RuntimeException("Ошибка: " + msg))
+                    )
                     .bodyToMono(String.class)
-                    .block(); // блокируем, если не используем reactive
+                    .block();
         } catch (Exception e) {
             return "Ошибка при бронировании: " + e.getMessage();
         }
@@ -35,12 +41,13 @@ public class PCClientService {
 
     public String cancelReservation(ReserveDto reserveDto) {
         try {
-            return webClient.post()
-                    .uri("http://localhost:8091/pc-service/pc/cancel-reserve")
+            return getWebClient().post()
+                    .uri("/pc-service/pc/cancel-reserve")
                     .body(Mono.just(reserveDto), ReserveDto.class)
                     .retrieve()
-                    .onStatus(status -> status.is4xxClientError() || status.is5xxServerError(), response ->
-                            response.bodyToMono(String.class)
+                    .onStatus(
+                            status -> status.is4xxClientError() || status.is5xxServerError(),
+                            response -> response.bodyToMono(String.class)
                                     .map(msg -> new RuntimeException("Ошибка при отмене бронирования: " + msg))
                     )
                     .bodyToMono(String.class)
@@ -52,16 +59,17 @@ public class PCClientService {
 
     public ServiceDictDto getService(Long serviceId) {
         try {
-            return webClient.get()
-                    .uri("http://localhost:8091/pc-service/service/get/" +  serviceId)
+            return getWebClient().get()
+                    .uri("/pc-service/service/get/" + serviceId)
                     .retrieve()
-                    .onStatus(status -> status.is4xxClientError() || status.is5xxServerError(), response ->
-                            response.bodyToMono(String.class)
-                                    .map(msg -> new RuntimeException("Ошибка: " + msg)))
+                    .onStatus(
+                            status -> status.is4xxClientError() || status.is5xxServerError(),
+                            response -> response.bodyToMono(String.class)
+                                    .map(msg -> new RuntimeException("Ошибка: " + msg))
+                    )
                     .bodyToMono(ServiceDictDto.class)
-                    .block();  // блокируем, если не используем reactive
+                    .block();
         } catch (Exception e) {
-            // Можно вернуть null или бросить исключение, если не удалось получить данные
             return null;
         }
     }
