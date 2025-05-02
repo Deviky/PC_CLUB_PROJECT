@@ -29,10 +29,8 @@ public class ServiceDict {
     @NotNull
     @Column(name="price_per_hour")
     float pricePerHour;
-    @Null
     @Column(name="min_age")
     int minAge;
-    @Null
     @Column(name="max_age")
     int maxAge;
     @NotNull
