@@ -15,7 +15,7 @@ const TopUpForm = ({ clientId, email, token, onSuccess }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:8966/payment/top-up", {
+      const response = await fetch("http://62.109.1.5:8966/payment/top-up", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

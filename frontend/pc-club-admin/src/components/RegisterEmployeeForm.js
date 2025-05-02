@@ -22,7 +22,7 @@ const RegisterEmployeeForm = ({ onSuccess }) => {
     const employeeData = { email, password, role };
 
     try {
-      const response = await fetch("http://localhost:8966/auth/register", {
+      const response = await fetch("http://62.109.1.5:8966/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

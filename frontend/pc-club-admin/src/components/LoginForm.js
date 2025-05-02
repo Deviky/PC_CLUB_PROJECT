@@ -20,7 +20,7 @@ const LoginForm = () => {
     setMessage("");
   
     try {
-      const response = await fetch("http://localhost:8966/auth/login", {
+      const response = await fetch("http://62.109.1.5:8966/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

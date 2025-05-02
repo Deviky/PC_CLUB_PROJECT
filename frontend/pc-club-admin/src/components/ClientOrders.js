@@ -17,7 +17,7 @@ const ClientOrders = ({ orders }) => {
 
   const handleCancelOrder = async (orderId) => {
     try {
-      const response = await fetch(`http://localhost:8966/order/cancel/${orderId}`, {
+      const response = await fetch(`http://62.109.1.5:8966/order/cancel/${orderId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,

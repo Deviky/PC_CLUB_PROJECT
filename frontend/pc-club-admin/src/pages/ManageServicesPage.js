@@ -17,7 +17,7 @@ const ManageServicesPage = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("http://localhost:8966/pc-service/service/get-all", {
+        const response = await fetch("http://62.109.1.5:8966/pc-service/service/get-all", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,
@@ -40,7 +40,7 @@ const ManageServicesPage = () => {
   useEffect(() => {
     const fetchPcGroups = async () => {
       try {
-        const response = await fetch("http://localhost:8966/pc-service/pc-group/get-all", {
+        const response = await fetch("http://62.109.1.5:8966/pc-service/pc-group/get-all", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,
@@ -73,8 +73,8 @@ const ManageServicesPage = () => {
   const handleSubmitService = async (requestData) => {
     try {
       const url = editingService
-        ? "http://localhost:8966/pc-service/service/update"
-        : "http://localhost:8966/pc-service/service/create";
+        ? "http://62.109.1.5:8966/pc-service/service/update"
+        : "http://62.109.1.5:8966/pc-service/service/create";
       const method = editingService ? "PUT" : "POST";
 
       const response = await fetch(url, {
@@ -124,7 +124,7 @@ const ManageServicesPage = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8966/pc-service/service/delete/${serviceId}`, {
+      const response = await fetch(`http://62.109.1.5:8966/pc-service/service/delete/${serviceId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,
