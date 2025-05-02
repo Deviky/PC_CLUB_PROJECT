@@ -17,7 +17,7 @@ FROM openjdk:21-jdk-slim
 WORKDIR /app
 
 # Копируем только собранный jar-файл из предыдущего этапа
-COPY --from=build /app/build/libs/*.jar ./app.jar
+COPY --from=build /app/build/libs/*.jar app.jar
 
 # Открываем порт, на котором будет работать Eureka сервер
 EXPOSE 8761
