@@ -18,7 +18,7 @@ const Header = () => {
     if (!searchEmail.trim()) return;
 
     try {
-      const response = await fetch(`http://62.109.1.5:8966/client/get-by-email/${encodeURIComponent(searchEmail)}`, {
+      const response = await fetch(`https://62.109.1.5:8966/client/get-by-email/${encodeURIComponent(searchEmail)}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -17,7 +17,7 @@ const ManagePCPage = () => {
   useEffect(() => {
     const fetchPcGroups = async () => {
       try {
-        const response = await fetch("http://62.109.1.5:8966/pc-service/pc-group/get-all", {
+        const response = await fetch("https://62.109.1.5:8966/pc-service/pc-group/get-all", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,
@@ -39,7 +39,7 @@ const ManagePCPage = () => {
 
   const handleStatusUpdate = async (pcId, newStatus) => {
     try {
-      const response = await fetch("http://62.109.1.5:8966/pc-service/pc/change-status", {
+      const response = await fetch("https://62.109.1.5:8966/pc-service/pc/change-status", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const ManagePCPage = () => {
 
   const handleDeletePc = async (pcId) => {
     try {
-      const response = await fetch(`http://62.109.1.5:8966/pc-service/pc/delete/${pcId}`, {
+      const response = await fetch(`https://62.109.1.5:8966/pc-service/pc/delete/${pcId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -130,7 +130,7 @@ const ManagePCPage = () => {
 
   const handleCreatePc = async (requestData) => {
     try {
-      const response = await fetch("http://62.109.1.5:8966/pc-service/pc/create", {
+      const response = await fetch("https://62.109.1.5:8966/pc-service/pc/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -146,7 +146,7 @@ const ManagePCPage = () => {
       } else {
         toast.success("ПК успешно создан!");
         setShowCreateForm(false);
-        const updatedResponse = await fetch("http://62.109.1.5:8966/pc-service/pc-group/get-all", {
+        const updatedResponse = await fetch("https://62.109.1.5:8966/pc-service/pc-group/get-all", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,
@@ -163,7 +163,7 @@ const ManagePCPage = () => {
 
   const handleCreateGroup = async (requestData) => {
     try {
-      const response = await fetch("http://62.109.1.5:8966/pc-service/pc-group/create", {
+      const response = await fetch("https://62.109.1.5:8966/pc-service/pc-group/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -179,7 +179,7 @@ const ManagePCPage = () => {
       } else {
         toast.success("Группа ПК успешно создана!");
         setShowCreateGroupForm(false);
-        const updatedResponse = await fetch("http://62.109.1.5:8966/pc-service/pc-group/get-all", {
+        const updatedResponse = await fetch("https://62.109.1.5:8966/pc-service/pc-group/get-all", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,
@@ -198,7 +198,7 @@ const ManagePCPage = () => {
     if (!window.confirm("Вы уверены, что хотите удалить эту группу ПК?")) return;
 
     try {
-      const response = await fetch(`http://62.109.1.5:8966/pc-service/pc-group/delete/${groupId}`, {
+      const response = await fetch(`https://62.109.1.5:8966/pc-service/pc-group/delete/${groupId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,

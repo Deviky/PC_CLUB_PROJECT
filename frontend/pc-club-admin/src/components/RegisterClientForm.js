@@ -17,7 +17,7 @@ const RegisterClientForm = () => {
     const clientData = { name, surname, dateOfBirth, email };
 
     try {
-      const response = await fetch("http://62.109.1.5:8966/client/add", {
+      const response = await fetch("https://62.109.1.5:8966/client/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
