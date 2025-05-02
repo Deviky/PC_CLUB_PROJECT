@@ -19,8 +19,6 @@ services:
     container_name: auth-service
     environment:
       - spring.application.name=AUTH-SERVICE
-    ports:
-      - "127.0.0.1:8095:8095"
     depends_on:
       - eureka-server
     entrypoint: /bin/sh -c "sleep 60 && java -jar /app/app.jar"  # Задержка 3 минуты
@@ -35,8 +33,6 @@ services:
     container_name: client-service
     environment:
       - spring.application.name=CLIENT-SERVICE
-    ports:
-      - "127.0.0.1:8093:8093"
     depends_on:
       - eureka-server
     entrypoint: /bin/sh -c "sleep 60 && java -jar /app/app.jar"  # Задержка 3 минуты
@@ -51,8 +47,6 @@ services:
     container_name: order-service
     environment:
       - spring.application.name=ORDER-SERVICE
-    ports:
-      - "127.0.0.1:8094:8094"
     depends_on:
       - eureka-server
     entrypoint: /bin/sh -c "sleep 60 && java -jar /app/app.jar"  # Задержка 3 минуты
@@ -67,8 +61,6 @@ services:
     container_name: payment-service
     environment:
       - spring.application.name=PAYMENT-SERVICE
-    ports:
-      - "127.0.0.1:8092:8092"
     depends_on:
       - eureka-server
     entrypoint: /bin/sh -c "sleep 60 && java -jar /app/app.jar"  # Задержка 3 минуты
@@ -83,8 +75,6 @@ services:
     container_name: pc-service
     environment:
       - spring.application.name=PC-SERVICE
-    ports:
-      - "127.0.0.1:8091:8091"
     depends_on:
       - eureka-server
     entrypoint: /bin/sh -c "sleep 60 && java -jar /app/app.jar"  # Задержка 3 минуты
