@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import "../styles/LoginForm.css"; // Подключаем стили
-import axios from 'axios';
-import https from 'https';
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -11,9 +9,6 @@ const LoginForm = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const { token, login } = useAuth();
-  const httpsAgent = new https.Agent({  
-    rejectUnauthorized: false  // отключаем проверку сертификатов
-  });
 
   // Если пользователь уже авторизован — редиректим на главную
   if (token) {
@@ -25,12 +20,10 @@ const LoginForm = () => {
     setMessage("");
   
     try {
-      const response = await axios.post("https://62.109.1.5:8966/auth/login", {
-        email,
-        password,
-      }, {
+      const response = await fetch("https://dennis.michurin.fvds.ru:8966/auth/login", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        httpsAgent, // Использование агента с отключённой проверкой сертификата
+        body: JSON.stringify({ email, password }),
       });
   
       // Если статус ответа успешный
