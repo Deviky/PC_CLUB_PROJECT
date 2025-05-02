@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import "../styles/LoginForm.css"; // Подключаем стили
+import axios from 'axios';
+import https from 'https';
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -20,10 +22,12 @@ const LoginForm = () => {
     setMessage("");
   
     try {
-      const response = await fetch("https://62.109.1.5:8966/auth/login", {
-        method: "POST",
+      const response = await axios.post("https://62.109.1.5:8966/auth/login", {
+        email,
+        password,
+      }, {
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        httpsAgent, // Использование агента с отключённой проверкой сертификата
       });
   
       // Если статус ответа успешный
