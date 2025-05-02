@@ -1,6 +1,7 @@
 package com.multiplayerserver.gateway.service;
 
 import com.multiplayerserver.gateway.dto.UserDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,17 +16,15 @@ import reactor.core.publisher.Mono;
 
 
 @Service
+@RequiredArgsConstructor
 public class AuthServiceClient {
 
     private final RestTemplate restTemplate;
 
-    public AuthServiceClient(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
-
     public UserDTO getUserFromToken(String token) {
         try {
-            String url = "http://localhost:8095/auth/me";
+            String url = "http://AUTH-SERVICE/auth/me"; // имя сервиса вместо localhost
+
             HttpHeaders headers = new HttpHeaders();
             headers.set("Authorization", "Bearer " + token);
 
@@ -40,7 +39,7 @@ public class AuthServiceClient {
 
             return response.getBody();
         } catch (HttpClientErrorException | HttpServerErrorException e) {
-            System.err.println("Ошибка: " + e.getStatusCode());
+            System.err.println("Ошибка при получении пользователя: " + e.getStatusCode());
             throw new RuntimeException("Ошибка при получении пользователя", e);
         }
     }
