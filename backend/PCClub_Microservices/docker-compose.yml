@@ -9,7 +9,7 @@ services:
     environment:
       - spring.application.name=DISCOVERY
     ports:
-      - "8761:8761"
+      - "127.0.0.1:8761:8761"
     networks:
       - pc-club-network
     restart: always
@@ -22,7 +22,7 @@ services:
     environment:
       - spring.application.name=AUTH-SERVICE
     ports:
-      - "8095:8095"
+      - "127.0.0.1:8095:8095"
     depends_on:
       - eureka-server
     entrypoint: /bin/sh -c "sleep 60 && java -jar /app/app.jar"  # Задержка 3 минуты
@@ -38,7 +38,7 @@ services:
     environment:
       - spring.application.name=CLIENT-SERVICE
     ports:
-      - "8093:8093"
+      - "127.0.0.1:8093:8093"
     depends_on:
       - eureka-server
     entrypoint: /bin/sh -c "sleep 60 && java -jar /app/app.jar"  # Задержка 3 минуты
@@ -54,7 +54,7 @@ services:
     environment:
       - spring.application.name=ORDER-SERVICE
     ports:
-      - "8094:8094"
+      - "127.0.0.1:8094:8094"
     depends_on:
       - eureka-server
     entrypoint: /bin/sh -c "sleep 60 && java -jar /app/app.jar"  # Задержка 3 минуты
@@ -70,7 +70,7 @@ services:
     environment:
       - spring.application.name=PAYMENT-SERVICE
     ports:
-      - "8092:8092"
+      - "127.0.0.1:8092:8092"
     depends_on:
       - eureka-server
     entrypoint: /bin/sh -c "sleep 60 && java -jar /app/app.jar"  # Задержка 3 минуты
@@ -86,7 +86,7 @@ services:
     environment:
       - spring.application.name=PC-SERVICE
     ports:
-      - "8091:8091"
+      - "127.0.0.1:8091:8091"
     depends_on:
       - eureka-server
     entrypoint: /bin/sh -c "sleep 60 && java -jar /app/app.jar"  # Задержка 3 минуты
