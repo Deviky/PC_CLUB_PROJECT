@@ -8,8 +8,6 @@ services:
     container_name: eureka-server
     environment:
       - spring.application.name=DISCOVERY
-    ports:
-      - "127.0.0.1:8761:8761"
     networks:
       - pc-club-network
     restart: always
