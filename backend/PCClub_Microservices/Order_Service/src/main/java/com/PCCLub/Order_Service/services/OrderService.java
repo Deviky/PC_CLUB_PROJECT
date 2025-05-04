@@ -51,6 +51,8 @@ public class OrderService {
             return new OrderCreateResponse("Ошибка: возраст клиента не соответствует требованиям сервиса.");
         }
 
+        log.debug("Время заказа: {} – {}", orderRequest.getStartDttm(), orderRequest.getEndDttm());
+
 
         LocalDateTime startDateTime = orderRequest.getStartDttm().toInstant()
                 .atZone(ZoneId.systemDefault())
