@@ -19,6 +19,11 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          time_zone: Europe/Moscow
+          
+  jackson:
+    time-zone: Europe/Moscow
 
 eureka:
   client:
