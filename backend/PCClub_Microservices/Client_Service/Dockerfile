@@ -24,3 +24,4 @@ EXPOSE 8093
 
 # Запускаем приложение
 ENTRYPOINT ["java", "-jar", "app.jar"]
+

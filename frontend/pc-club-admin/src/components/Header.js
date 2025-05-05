@@ -39,7 +39,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo" onClick={() => navigate("/dashboard")}>
-        ПК Клуб
+        PC Club Manager
       </div>
 
       <div className="search">

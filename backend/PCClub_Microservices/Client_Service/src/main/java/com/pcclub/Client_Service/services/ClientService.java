@@ -24,7 +24,6 @@ public class ClientService {
     private final PaymentServiceClient paymentServiceClient;
 
     @Transactional
-
     public String addClient(ClientCreateRequest client) {
         String emailPattern = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         if (!Pattern.matches(emailPattern, client.getEmail())) {
