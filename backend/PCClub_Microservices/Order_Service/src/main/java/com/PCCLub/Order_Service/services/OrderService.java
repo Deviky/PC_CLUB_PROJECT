@@ -51,13 +51,17 @@ public class OrderService {
             return new OrderCreateResponse("Ошибка: возраст клиента не соответствует требованиям сервиса.");
         }
 
+        log.debug("Время заказа: {} – {}", orderRequest.getStartDttm(), orderRequest.getEndDttm());
+
+
+        ZoneId moscowZone = ZoneId.of("Europe/Moscow");
 
         LocalDateTime startDateTime = orderRequest.getStartDttm().toInstant()
-                .atZone(ZoneId.systemDefault())
+                .atZone(moscowZone)
                 .toLocalDateTime();
-
+        
         LocalDateTime endDateTime = orderRequest.getEndDttm().toInstant()
-                .atZone(ZoneId.systemDefault())
+                .atZone(moscowZone)
                 .toLocalDateTime();
 
 // Проверка на валидную продолжительность заказа

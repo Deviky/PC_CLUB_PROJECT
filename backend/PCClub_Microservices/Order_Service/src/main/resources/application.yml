@@ -20,9 +20,6 @@ spring:
   config:
     import: optional:configserver:http://localhost:8888
 
-  jackson:
-    time-zone: "Europe/Moscow"
-
 
 eureka:
   client:
