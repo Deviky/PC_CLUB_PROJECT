@@ -92,8 +92,10 @@
 ```bash
 cd backend/PCClub_Microservices
 docker-compose up --build
-
+```
 ### Frontend 
+```bash
 cd frontend/pc-club-admin
 npm install
 npm run build
+```
