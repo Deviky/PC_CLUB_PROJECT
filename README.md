@@ -18,7 +18,7 @@
 
 ### Frontend:
 - ReactJS  
-- JavaScript (без TypeScript)  
+- JavaScript
 - HTML5, CSS3  
 - Axios  
 - Vite  
